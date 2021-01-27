@@ -41,7 +41,7 @@ let to = readLine()!
 
 switch to {
 case "B":
-    endBase = 2
+    endBase = 2 //can make equal to .binary or something and use an enum so that the function changes it
 case "O":
     endBase = 8
 case "D":
