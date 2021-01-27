@@ -12,20 +12,21 @@ print("B: Binary")
 print("O: Octal")
 print("D: Decimal")
 print("H: Hexadecimal")
-print("Enter your choice (B/O/D/H): ", terminator: "") //keep following output on the same line
-let from = readLine()!
+print("Enter your choice (B/O/D/H): ", terminator: "")
+var from = readLine()!
 
-var startBase = 0.0
+var startBase = Int()
+var endBase = Int ()
 
 switch from {
 case "B":
-    var startBase = 2.0
+    startBase = 2
 case "O":
-    var startBase = 8.0
+    startBase = 8
 case "D":
-    var startBase = 10.0
+    startBase = 10
 case "H":
-    var startBase = 16.0
+    startBase = 16
 default:
     print("Please enter a valid number system")
 }
@@ -35,8 +36,21 @@ print("B: Binary")
 print("O: Octal")
 print("D: Decimal")
 print("H: Hexadecimal")
-print("Enter your choice (B/O/D/H): ", terminator: "") //keep following output on the same line
+print("Enter your choice (B/O/D/H): ", terminator: "")
 let to = readLine()!
+
+switch to {
+case "B":
+    endBase = 2
+case "O":
+    endBase = 8
+case "D":
+    endBase = 10
+case "H":
+    endBase = 16
+default:
+    print("Please enter a valid number system")
+}
 
 print("What number do you want to convert?")
 let numberToConvert = readLine()!
@@ -59,9 +73,41 @@ func getDecimalValue (of value: String, base: Double) -> Double {
     
 }
 
-let decimalValue=getDecimalValue(of: numberToConvert, base: startBase)
+let decimalValue = getDecimalValue(of: numberToConvert, base: Double(startBase))
 
-switch to {
-case:
+
+func getRepresentation(of valueToConvert: Int, inBase base: Double) -> String {
+    var decimalValueLeftToConvert = valueToConvert
+    var representation = ""
+    while decimalValueLeftToConvert > 0 {
+        let nextDigit = decimalValueLeftToConvert % Int(base)
+        if base == 16 {
+            switch nextDigit {
+            case 0...9:
+                representation = String(nextDigit) + representation
+            case 10:
+                representation = "A" + representation
+            case 11:
+                representation = "B" + representation
+            case 12:
+                representation = "C" + representation
+            case 13:
+                representation = "D" + representation
+            case 14:
+                representation = "E" + representation
+            case 15:
+                representation = "F" + representation
+            default:
+                break
+            }
+        } else {
+            representation = String(nextDigit) + representation
+        }
+        decimalValueLeftToConvert = decimalValueLeftToConvert / Int(base)
+    }
+    return representation
     
 }
+
+let convertedValue = getRepresentation(of: Int(decimalValue), inBase: Double(endBase))
+print("Your converted value is \(convertedValue)")
