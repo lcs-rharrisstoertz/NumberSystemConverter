@@ -15,8 +15,8 @@ print("H: Hexadecimal")
 print("Enter your choice (B/O/D/H): ", terminator: "")
 var from = readLine()!
 
-var startBase = Int()
-var endBase = Int ()
+var startBase = Double()
+var endBase = Double ()
 
 switch from {
 case "B":
