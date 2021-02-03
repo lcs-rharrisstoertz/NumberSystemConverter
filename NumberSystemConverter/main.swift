@@ -12,8 +12,7 @@ print("B: Binary")
 print("O: Octal")
 print("D: Decimal")
 print("H: Hexadecimal")
-print("Enter your choice (B/O/D/H): ", terminator: "")
-var from = readLine()!
+var from = String.collectInput(withPrompt: "Enter your choice (B/O/D/H): ", acceptableValues: ["B", "O", "D", "H"])
 
 var startBase = Double()
 var endBase = Double ()
@@ -36,8 +35,8 @@ print("B: Binary")
 print("O: Octal")
 print("D: Decimal")
 print("H: Hexadecimal")
-print("Enter your choice (B/O/D/H): ", terminator: "")
-let to = readLine()!
+var to = String.collectInput(withPrompt: "Enter your choice (B/O/D/H): ", acceptableValues: ["B", "O", "D", "H"])
+
 
 switch to {
 case "B":
@@ -49,7 +48,7 @@ case "D":
 case "H":
     endBase = 16
 default:
-    print("Please enter a valid number system")
+    break
 }
 
 print("What number do you want to convert?")
